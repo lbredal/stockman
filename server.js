@@ -3,6 +3,7 @@ import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import { config } from './src/config.js'
+import devRoutes from './src/routes/dev.js'
 
 const app = express()
 
@@ -17,6 +18,8 @@ app.get('/health', (req, res) => res.json({ status: 'ok' }))
 // app.use('/api/batches', batchRoutes)
 // app.use('/api/categories', categoryRoutes)
 // app.use('/api/units', unitRoutes)
+
+app.use('/api/dev', devRoutes)
 
 app.use((err, req, res, next) => {
   const status = err.statusCode || 500

@@ -1,18 +1,19 @@
 import { Routes, Route } from 'react-router-dom'
-
-function Home() {
-  return (
-    <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Stockman</h1>
-      <p>Inventory management for small producers.</p>
-    </main>
-  )
-}
+import LandingC from './components/pages/LandingC'
+import Dashboard from './components/pages/Dashboard'
+import UpdateInventory from './components/pages/UpdateInventory'
+import WaitingGame from './components/pages/WaitingGame'
+import AppLayout from './components/AppLayout'
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<LandingC />} />
+      <Route element={<AppLayout />}>
+        <Route path="/dashboard"        element={<Dashboard />} />
+        <Route path="/update-inventory" element={<UpdateInventory />} />
+        <Route path="/waiting-game"     element={<WaitingGame />} />
+      </Route>
     </Routes>
   )
 }
